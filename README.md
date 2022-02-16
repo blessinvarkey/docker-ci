@@ -1,10 +1,10 @@
 # docker
 
-## Setting up a dockerfile
+## Setting up the dockerfile
 - Create a new file: [helloworld.py](main/helloworld.py)
 - Create a [Dockerfile](main/Dockerfile)
 
-## Setting up a CI/CD Pipeline 
+## Setting up the CI/CD Pipeline 
 - Create a new workflow or select the docker template
 - Ammend the .yml page.
     - on push: only for the main branch
