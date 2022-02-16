@@ -33,6 +33,6 @@ jobs:
       run: docker build . --file Dockerfile --tag hello
 ```
 
-<img src="build1.png" alt="build image" width="500"/>
+<img src="build1.png" alt="build image" width="700"/>
 
-<img src="build2.png" alt="build image" width="500"/>
+<img src="build2.png" alt="build image" width="700"/>
