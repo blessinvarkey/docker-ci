@@ -1,8 +1,8 @@
 # docker
 
 ## Setting up a dockerfile
-- Create a new file: helloworld.py
-- Create a Dockerfile
+- Create a new file: [helloworld.py](main/helloworld.py)
+- Create a [Dockerfile](main/Dockerfile)
 
 ## Setting up a CI/CD Pipeline 
 - Create a new workflow or select the docker template
@@ -32,3 +32,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag hello
 ```
+
+<img src="build1.png" alt="build image" width="500"/>
+
+<img src="build2.png" alt="build image" width="500"/>
