@@ -1,10 +1,15 @@
 # docker
 
+## Setting up a dockerfile
+- Create a new file: helloworld.py
+- Create a Dockerfile
 
-Steps: 
-on push: only for the main branch
-runs-on: ubuntu latest vm 
-actions/checkout: specific github action + specific version
+## Setting up a CI/CD Pipeline 
+- Create a new workflow or select the docker template
+- Ammend the .yml page.
+    - on push: only for the main branch
+    - runs-on: ubuntu latest vm 
+    - actions/checkout: specific github action + specific version
 
 
 ```
