@@ -1,10 +1,10 @@
-# docker
+# aws-codedeploy-docker
 
 ## Setting up the dockerfile
 - Python file [helloworld.py](/helloworld.py)
 - Create a [Dockerfile](/Dockerfile)
 
-## Run the dockerfile
+### Run a dockerfile locally
 ```
 docker build -t hello .
 docker run hello
@@ -42,7 +42,7 @@ jobs:
 
 <img src="build2.png" alt="build image" width="700"/>
 
-## To build and push docker image
+### To build and push docker image
 
 Create a [repo](https://hub.docker.com/repository/docker/blessinvarkey/docker-github-actions) on hub.docker.com.
 
@@ -88,6 +88,7 @@ jobs:
 
 
 ## Setting up the CD Pipeline via CodeDeploy
+### AWS Service: EC2
 - Create IAM Role (EC2:CodeDeploy -'EC2CodeDeployRole', CodeDeploy)> EC2 Instance> Select AMI  (choose the same operating system as mentioned in yml file)> Choose Instance Type: EC2CodeDeployRole > 
 
 ```
