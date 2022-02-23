@@ -1,19 +1,23 @@
 # docker
 
 ## Setting up the dockerfile
-- Create a new file: [helloworld.py](main/helloworld.py)
-- Create a [Dockerfile](main/Dockerfile)
+- Python file [helloworld.py](/helloworld.py)
+- Create a [Dockerfile](/Dockerfile)
 
-## Setting up the CI Pipeline 
+## Run the dockerfile
+```
+docker build -t hello .
+docker run hello
+```
 
-- Create a new workflow or select the docker template
+## Setting up the CI Pipeline via Github Actions
+- Create a new workflow or select the docker template (via Actions)
 - Ammend the .yml page. It can be found in .github/workflows folder.
     - _on push:_ Triggers the event (only on the main branch)
     - _runs-on:_ ubuntu latest vm 
     - _actions/checkout:_ specific github action + specific version
 
 ```
-
 name: Docker Image CI
 
 on:
@@ -34,8 +38,7 @@ jobs:
       run: docker build . --file Dockerfile --tag hello
 ```
 
-
-<img src="build1.png" alt="build image" width="700"/>
+### Docker image build:
 
 <img src="build2.png" alt="build image" width="700"/>
 
@@ -76,18 +79,16 @@ jobs:
 
     
 ```
-## Set Secrets
+## Set Secrets (via repo settings)
 
-![](secrets1.png)
- 
-Create two secret keys: DOCKER_USERNAME and DOCKER_PASSWORD. The values should be your hub.docker.com username and password, respectively. 
-
+- Create two secret keys: DOCKER_USERNAME and DOCKER_PASSWORD.     
+- The values should be your hub.docker.com username and password, respectively. 
 
 ![](secrets2.png)
 
 
-## Setting up the CD Pipeline 
-Create IAM Role (EC2:CodeDeploy -'EC2CodeDeployRole', CodeDeploy)> EC2 Instance> Select AMI  (choose the same operating system as mentioned in yml file)> Choose Instance Type: EC2CodeDeployRole > 
+## Setting up the CD Pipeline via CodeDeploy
+- Create IAM Role (EC2:CodeDeploy -'EC2CodeDeployRole', CodeDeploy)> EC2 Instance> Select AMI  (choose the same operating system as mentioned in yml file)> Choose Instance Type: EC2CodeDeployRole > 
 
 ```
 #!/bin/bash
@@ -100,17 +101,17 @@ sudo chmod +x ./install
 sudo ./install auto
 ```
 
-Tags: App
-Type: SSH:TCP:22:Custom   
-Type: SSH:TCP:80:Custom   
-Type: SSH:TCP:3000:Anywhere
+- Tags: App
+  - Type: SSH:TCP:22:Custom   
+  - Type: SSH:TCP:80:Custom   
+  - Type: SSH:TCP:3000:Anywhere
 
-Create a Key Pair> Launch 
+- Create a Key Pair> Launch 
 
 ### AWS Service: CodeDeploy
-Create an Application> App>    
-Create Deployment Group> Select EC2 instance> Create Deployment group
-Create Pipeline> Source (Githubv2)>Connect to Github (install new app)>Next>Build (skip)>Create pipeline
+- Create an Application> App>    
+- Create Deployment Group> Select EC2 instance> Create Deployment group
+- Create Pipeline> Source (Githubv2)>Connect to Github (install new app)>Next>Build (skip)>Create pipeline
 
-Go to EC2 Public IPV4 address (add port ':3000')
+- Go to EC2 Public IPV4 address (add port ':3000')
 
