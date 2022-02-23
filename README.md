@@ -1,10 +1,9 @@
-# aws-codedeploy-docker
+# docker-ci
 
 ## Setting up the dockerfile
 - Python file [helloworld.py](/helloworld.py)
 - Create a [Dockerfile](/Dockerfile)
 
-### Run a dockerfile locally
 ```
 docker build -t hello .
 docker run hello
@@ -79,40 +78,11 @@ jobs:
 
     
 ```
-## Set Secrets (via repo settings)
+### Set Secrets (via repo settings)
 
 - Create two secret keys: DOCKER_USERNAME and DOCKER_PASSWORD.     
 - The values should be your hub.docker.com username and password, respectively. 
 
 ![](secrets2.png)
 
-
-## Setting up the CD Pipeline via CodeDeploy
-### AWS Service: EC2
-- Create IAM Role (EC2:CodeDeploy -'EC2CodeDeployRole', CodeDeploy)> EC2 Instance> Select AMI  (choose the same operating system as mentioned in yml file)> Choose Instance Type: EC2CodeDeployRole > 
-
-```
-#!/bin/bash
-sudo yum -y update
-sudo yum -y install ruby
-sudo yum -y install wget
-cd /home/ec2-user
-wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install
-sudo chmod +x ./install
-sudo ./install auto
-```
-
-- Tags: App
-  - Type: SSH:TCP:22:Custom   
-  - Type: SSH:TCP:80:Custom   
-  - Type: SSH:TCP:3000:Anywhere
-
-- Create a Key Pair> Launch 
-
-### AWS Service: CodeDeploy
-- Create an Application> App>    
-- Create Deployment Group> Select EC2 instance> Create Deployment group
-- Create Pipeline> Source (Githubv2)>Connect to Github (install new app)>Next>Build (skip)>Create pipeline
-
-- Go to EC2 Public IPV4 address (add port ':3000')
 
