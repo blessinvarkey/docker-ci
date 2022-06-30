@@ -72,9 +72,7 @@ jobs:
         registry: registry-url.io
         dockerfile: Dockerfile.ci
         username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-
-    
+        password: ${{ secrets.DOCKER_PASSWORD }}    
 ```
 ## Set Secrets
 
@@ -113,4 +111,3 @@ Create Deployment Group> Select EC2 instance> Create Deployment group
 Create Pipeline> Source (Githubv2)>Connect to Github (install new app)>Next>Build (skip)>Create pipeline
 
 Go to EC2 Public IPV4 address (add port ':3000')
-
